@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import './myStyles.css'
 class Background extends Component {
 	constructor(props) {
 		super(props);
@@ -26,12 +27,13 @@ class Background extends Component {
 				{this.state.loading || !this.state.items ? (
 					<div>loading...</div>
 				) : (
-						<div className="adssa">
-							aaa
+						<div className="gallery">
+
 							{/* {this.state.items} */}
-							{this.state.items.forEach((item) => {
+
+							{this.state.items.map((item, index) => {
 								console.log(item.urls.small);
-								return (<span>{item.urls.small}</span>)
+								return (<img key={index} src={item.urls.small} alt="image" />)
 							})
 							}
 						</div>
@@ -47,9 +49,9 @@ export default Background;
 // 	console.log(item.urls)
 // 	console.log(item.urls.small);
 // 	console.log(item.id);
-	
+
 // 	{/* <img  key={item.id} src={item[3].urls.small} alt="image" width="500" height="500"/> */}
 // 	<img  key={item.id} src={item} alt="image" width="500" height="500"/>
-	
-	
+
+
 // 	})}
