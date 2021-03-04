@@ -1,13 +1,22 @@
 .gallery{    
   display: flex;
   flex-wrap: wrap;
-  align-content: center;
+  /* align-content: center; */
   justify-items: stretch;
   flex-direction: column;
   max-height: 180.6vh;}
-.gallery h1{color:red}
-.gallery img{margin:0.5em;border:.2em solid #332d2a;box-shadow:3px 3px 8px 0 rgba(0,0,255,.3);max-width:15vw}
 
+.gallery h1{color:red}
+
+.gallery .g-img{margin:0.5em;border:.2em solid #332d2a;box-shadow:3px 3px 8px 0 rgba(0,0,255,.3);max-width:15vw;
+transition: 0.3s all ease-in-out;
+cursor: pointer;
+}
+
+
+.gallery .g-img.scale{
+  transform: scale(1.05);
+}
 @media screen and (max-width: 1025px) {
   .gallery{
     flex-direction: row;

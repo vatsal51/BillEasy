@@ -5,20 +5,34 @@ class Background extends Component {
 		super(props);
 		this.state = {
 			items: null,
-			loading: true
+			loading: true,
+
 		};
+		this.clickHandler = this.clickHandler.bind(this);
 	}
 	async componentDidMount() {
 		const url = 'http://www.mocky.io/v2/5ecb5c353000008f00ddd5a0';
 		const response = await fetch(url);
 		const data = await response.json();
-		// console.log(data.length)
-		//    this.setState({items:data[2].urls.small, loading:false});
-		this.setState({ items: data, loading: false });
-
+				this.setState({ items: data, loading: false });
 		//    console.log(data.urls.small);
 		// console.log(this.state.items)
 		// console.log(this.state.loading);
+	}
+
+	clickHandler = (elem) => {
+		const img = document.querySelectorAll(".g-img");
+		if (elem.target.className == "g-img") {
+			img.forEach(radi => {
+				radi.classList.remove("scale");
+				elem.target.classList.add("scale");
+			});
+		}
+		else {
+			img.forEach(radi => {
+				radi.classList.remove("scale");
+			});
+		}
 	}
 
 	render() {
@@ -28,12 +42,9 @@ class Background extends Component {
 					<div>loading...</div>
 				) : (
 						<div className="gallery">
-
-							{/* {this.state.items} */}
-
 							{this.state.items.map((item, index) => {
-								console.log(item.urls.small);
-								return (<img key={index} src={item.urls.small} alt="image" />)
+								// console.log(item.urls.small);
+								return (<img className="g-img" onClick={this.clickHandler} key={index} src={item.urls.small} alt="altimage" />)
 							})
 							}
 						</div>
@@ -45,13 +56,3 @@ class Background extends Component {
 
 }
 export default Background;
-// {this.state.items.map((item) => {
-// 	console.log(item.urls)
-// 	console.log(item.urls.small);
-// 	console.log(item.id);
-
-// 	{/* <img  key={item.id} src={item[3].urls.small} alt="image" width="500" height="500"/> */}
-// 	<img  key={item.id} src={item} alt="image" width="500" height="500"/>
-
-
-// 	})}
