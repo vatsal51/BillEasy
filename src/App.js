@@ -8,6 +8,10 @@ function App() {
   );
 }
 
+navigator.serviceWorker &&
+navigator.serviceWorker.register('worker.js').then(function (registration)
+{
+});
 export default App;
 
 
